@@ -18,28 +18,36 @@ public class _To_TypeTestWithId1 {
 
 	@Test
 	public void bodyIsSedan() {
+		// given
 		AbstractIdType body = new BodyTo(id, BodyType.SEDAN);
+		// then
 		assertEquals(id, body.getId());
 		assertEquals(BodyType.SEDAN, body.getType());
 	}
 
 	@Test
 	public void colorIsBlack() {
+		// given
 		AbstractIdType color = new ColorTo(id, ColorType.BLACK);
+		// then
 		assertEquals(id, color.getId());
 		assertEquals(ColorType.BLACK, color.getType());
 	}
 	
 	@Test
 	public void driveWheelsIsFront() {
+		// given
 		AbstractIdType wheels = new DriveWheelsTo(id, DriveWheelsType.FRONT);
+		// then
 		assertEquals(id, wheels.getId());
 		assertEquals(DriveWheelsType.FRONT, wheels.getType());
 	}
 
 	@Test
 	public void transmissionIsAuto() {
+		// given
 		AbstractIdType transmission = new TransmissionTo(id, TransmissionType.AUTO);
+		// then
 		assertEquals(id, transmission.getId());
 		assertEquals(TransmissionType.AUTO, transmission.getType());
 	}
