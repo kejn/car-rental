@@ -2,6 +2,7 @@ package pl.wroc.edu.model.to;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.concurrent.TimeUnit;
 
 import pl.wroc.edu.model.templates.IdAware;
 
@@ -31,7 +32,13 @@ public class BookingTo implements IdAware {
 		this.renter = renter;
 		this.since = since;
 		this.until = until;
-		// TODO price calculation using pricePerDay field
+		this.price = calculatePrice(); 
+	}
+
+	// number of days (until-since) * pricePerDay
+	private Double calculatePrice() {
+		long diff = until.getTime() - since.getTime();
+		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) * pricePerDay;
 	}
 
 	@Override
