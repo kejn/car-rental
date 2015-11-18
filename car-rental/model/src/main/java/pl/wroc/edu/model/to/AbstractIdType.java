@@ -1,6 +1,9 @@
-package pl.wroc.edu.model.templates;
+package pl.wroc.edu.model.to;
 
 import java.math.BigDecimal;
+
+import pl.wroc.edu.model.templates.IdAware;
+import pl.wroc.edu.model.templates.TypeAware;
 
 public abstract class AbstractIdType implements IdAware, TypeAware {
 

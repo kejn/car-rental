@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import pl.wroc.edu.model.templates.AbstractIdType;
 import pl.wroc.edu.model.types.BodyType;
 import pl.wroc.edu.model.types.ColorType;
 import pl.wroc.edu.model.types.DriveWheelsType;

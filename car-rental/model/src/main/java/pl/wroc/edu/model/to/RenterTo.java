@@ -3,7 +3,6 @@ package pl.wroc.edu.model.to;
 import java.math.BigDecimal;
 
 import pl.wroc.edu.model.helper.EmptyString;
-import pl.wroc.edu.model.templates.AbstractIdName;
 
 public class RenterTo extends AbstractIdName {
 	

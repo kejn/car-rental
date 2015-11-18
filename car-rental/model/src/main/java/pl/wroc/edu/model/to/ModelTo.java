@@ -2,8 +2,6 @@ package pl.wroc.edu.model.to;
 
 import java.math.BigDecimal;
 
-import pl.wroc.edu.model.templates.AbstractIdName;
-
 public class ModelTo extends AbstractIdName {
 	
 	private String manufacturer;

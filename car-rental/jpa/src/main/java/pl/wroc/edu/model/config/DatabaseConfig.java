@@ -17,20 +17,19 @@ public class DatabaseConfig {
 
 	@Value("${jdbc.user}")
 	private String user;
-	
+
 	@Value("${jdbc.password}")
 	private String password;
-	
+
 	@Value("${jdbc.url}")
-	private String jdbcUrl;
-	
+	private String url;
+
 	@Bean
 	public DataSource dataSource() throws SQLException {
 		OracleDataSource dataSource = new OracleDataSource();
 		dataSource.setUser(user);
 		dataSource.setPassword(password);
-		dataSource.setURL(jdbcUrl);
+		dataSource.setURL(url);
 		return dataSource;
 	}
-
 }
