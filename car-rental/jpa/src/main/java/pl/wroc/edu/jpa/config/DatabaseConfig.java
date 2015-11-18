@@ -11,25 +11,26 @@ import org.springframework.context.annotation.PropertySource;
 
 import oracle.jdbc.pool.OracleDataSource;
 
+
 @Configuration
-@PropertySource(value = "classpath:config/jdbc.properties", ignoreResourceNotFound = false)
+//@PropertySource(value = "classpath:config/jdbc.properties", ignoreResourceNotFound = false)
 public class DatabaseConfig {
 
-	@Value("${jdbc.user}")
-	private String user;
-
-	@Value("${jdbc.password}")
-	private String password;
-
-	@Value("${jdbc.url}")
-	private String url;
-
-	@Bean
-	public DataSource dataSource() throws SQLException {
-		OracleDataSource dataSource = new OracleDataSource();
-		dataSource.setUser(user);
-		dataSource.setPassword(password);
-		dataSource.setURL(url);
-		return dataSource;
-	}
+//	@Value("${jdbc.user}")
+//	private String user;
+//
+//	@Value("${jdbc.password}")
+//	private String password;
+//
+//	@Value("${jdbc.url}")
+//	private String url;
+//
+//	@Bean
+//	public DataSource dataSource() throws SQLException {
+//		OracleDataSource dataSource = new OracleDataSource();
+//		dataSource.setUser(user);
+//		dataSource.setPassword(password);
+//		dataSource.setURL(url);
+//		return dataSource;
+//	}
 }

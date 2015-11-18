@@ -41,17 +41,17 @@ public class CarEntity {
 	private LocationEntity location;
 
 	@Column
-	private Integer weight; // Kilograms [kg]
+	private Short weight; // Kilograms [kg]
 
 	@Column
-	private Integer power; // Horsepower [hp]
+	private Short power; // Horsepower [hp]
 	
 	protected CarEntity(){
 	}
 
 	public CarEntity(BigDecimal id, ModelEntity model, ColorEntity color, BodyEntity body,
-			TransmissionEntity transmission, DriveWheelsEntity driveWheels, LocationEntity location, Integer weight,
-			Integer power) {
+			TransmissionEntity transmission, DriveWheelsEntity driveWheels, LocationEntity location, Short weight,
+			Short power) {
 		this.id = id;
 		this.model = model;
 		this.color = color;
@@ -119,19 +119,19 @@ public class CarEntity {
 		this.location = location;
 	}
 
-	public Integer getWeight() {
+	public Short getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Integer weight) {
+	public void setWeight(Short weight) {
 		this.weight = weight;
 	}
 
-	public Integer getPower() {
+	public Short getPower() {
 		return power;
 	}
 
-	public void setPower(Integer power) {
+	public void setPower(Short power) {
 		this.power = power;
 	}
 	

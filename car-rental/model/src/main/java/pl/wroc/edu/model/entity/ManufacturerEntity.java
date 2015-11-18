@@ -4,10 +4,14 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Table(name = "MANUFACTURERS")
 public class ManufacturerEntity {
 	
 	@Id
+	@OneToOne(mappedBy = "manufacturer")
 	private BigDecimal id;
 	
 	@Column(nullable = false, length = 40)

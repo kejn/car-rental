@@ -14,25 +14,26 @@ public class CarDaoImpl extends AbstractDao<CarEntity, BigDecimal> implements Ca
 
 	@Override
 	public List<CarEntity> findByLocation(String location) {
-		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<CarEntity> criteriaQuery = builder.createQuery(CarEntity.class);
-		Root<CarEntity> root = criteriaQuery.from(CarEntity.class);
-		criteriaQuery.select(root);
-		criteriaQuery.where(builder.equal(root.get("location"), location));
-		
-		return entityManager.createQuery(criteriaQuery).getResultList();
+		return entityManager.createQuery(selectFromCarEntityEqual("location",location)).getResultList();
 	}
 
 	@Override
 	public List<CarEntity> findByManufacturer(String manufacturer) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.createQuery(selectFromCarEntityEqual("manufacturer",manufacturer)).getResultList();
 	}
 
 	@Override
 	public List<CarEntity> findByModelName(String modelName) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.createQuery(selectFromCarEntityEqual("model",modelName)).getResultList();
+	}
+	
+	private CriteriaQuery<CarEntity> selectFromCarEntityEqual(String column, String value) {
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<CarEntity> criteriaQuery = builder.createQuery(CarEntity.class);
+		Root<CarEntity> root = criteriaQuery.from(CarEntity.class);
+		criteriaQuery.select(root);
+		criteriaQuery.where(builder.equal(root.get(column), value));
+		return criteriaQuery;
 	}
 	
 }

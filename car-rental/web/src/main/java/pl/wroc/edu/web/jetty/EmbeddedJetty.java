@@ -13,10 +13,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import pl.wroc.edu.jpa.config.DataAccessConfig;
-import pl.wroc.edu.jpa.config.DatabaseConfig;
-import pl.wroc.edu.web.config.MvcConfig;
-import pl.wroc.edu.web.config.ThymeleafConfig;
 import pl.wroc.edu.web.config.WebConfig;
 
 public class EmbeddedJetty {
@@ -57,7 +53,7 @@ public class EmbeddedJetty {
 	
 	private WebApplicationContext getContext() {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-		context.register(WebConfig.class, MvcConfig.class, ThymeleafConfig.class, DatabaseConfig.class, DataAccessConfig.class);
+		context.register(WebConfig.class);//, MvcConfig.class, ThymeleafConfig.class, DatabaseConfig.class, DataAccessConfig.class);
 //		context.setConfigLocation(configLocation);
 		context.getEnvironment().setDefaultProfiles(defaultProfile);
 		return context;
