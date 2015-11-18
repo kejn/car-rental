@@ -1,4 +1,4 @@
-package pl.wroc.edu.model.dao.impl;
+package pl.wroc.edu.jpa.dao.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import pl.wroc.edu.model.dao.CarDao;
+import pl.wroc.edu.jpa.dao.CarDao;
 import pl.wroc.edu.model.entity.CarEntity;
 
 public class CarDaoImpl extends AbstractDao<CarEntity, BigDecimal> implements CarDao {

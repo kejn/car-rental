@@ -1,4 +1,4 @@
-package pl.wroc.edu.model.dao;
+package pl.wroc.edu.jpa.dao;
 
 import java.math.BigDecimal;
 import java.util.List;

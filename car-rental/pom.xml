@@ -8,6 +8,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>jpa</module>
+		<module>model</module>
+		<module>web</module>
+	</modules>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<spring.framework.version>4.2.3.RELEASE</spring.framework.version>
@@ -173,10 +179,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<modules>
-		<module>jpa</module>
-		<module>model</module>
-		<module>web</module>
-	</modules>
 </project>

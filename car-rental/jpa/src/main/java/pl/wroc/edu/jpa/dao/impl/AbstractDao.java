@@ -1,4 +1,4 @@
-package pl.wroc.edu.model.dao.impl;
+package pl.wroc.edu.jpa.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -14,7 +14,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
-import pl.wroc.edu.model.dao.Dao;
+import pl.wroc.edu.jpa.dao.Dao;
 
 @Transactional(Transactional.TxType.REQUIRED)
 public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K> {

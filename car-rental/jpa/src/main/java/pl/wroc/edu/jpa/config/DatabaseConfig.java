@@ -1,4 +1,4 @@
-package pl.wroc.edu.model.config;
+package pl.wroc.edu.jpa.config;
 
 import java.sql.SQLException;
 
