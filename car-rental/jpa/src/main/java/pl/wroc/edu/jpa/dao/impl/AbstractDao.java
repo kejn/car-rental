@@ -14,12 +14,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
+import pl.wroc.edu.jpa.config.DataAccessConfig;
 import pl.wroc.edu.jpa.dao.Dao;
 
 @Transactional(Transactional.TxType.REQUIRED)
 public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K> {
 
-	@PersistenceContext
+	@PersistenceContext(unitName = DataAccessConfig.PERSISTANCE_UNIT_NAME)
 	protected EntityManager entityManager;
 
 	private Class<T> domainClass;

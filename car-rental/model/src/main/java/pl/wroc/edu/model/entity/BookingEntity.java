@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "BOOKING")
@@ -27,21 +25,19 @@ public class BookingEntity {
 	@JoinColumn(name = "renter")
 	private RenterEntity renter;
 
-	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date since;
 
-	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date until;
 
 	@Column(nullable = false)
-	private Double price; // PLN
+	private Float price; // PLN
 	
 	protected BookingEntity(){
 	}
 	
-	public BookingEntity(BigDecimal id, CarEntity car, RenterEntity renter, Date since, Date until, Double price) {
+	public BookingEntity(BigDecimal id, CarEntity car, RenterEntity renter, Date since, Date until, Float price) {
 		this.id = id;
 		this.car = car;
 		this.renter = renter;
@@ -90,11 +86,11 @@ public class BookingEntity {
 		this.until = until;
 	}
 
-	public Double getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 }

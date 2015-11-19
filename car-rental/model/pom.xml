@@ -7,21 +7,26 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>model</artifactId>
+	
+	<properties>
+		<querydsl.version>3.6.9</querydsl.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
-			<version>3.6.6</version>
+			<version>${querydsl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
-			<version>3.6.6</version>
+			<version>${querydsl.version}</version>
 		</dependency>
 	</dependencies>
 

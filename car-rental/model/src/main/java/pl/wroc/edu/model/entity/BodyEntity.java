@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +12,7 @@ import javax.persistence.Table;
 public class BodyEntity {
 
 	@Id
-	@OneToOne(mappedBy = "body")
+//	@OneToOne(mappedBy = "body")
 	private BigDecimal id;
 	
 	@Column(nullable = false, length = 20)
