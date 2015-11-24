@@ -17,6 +17,11 @@ public class CarController {
 	@Autowired
 	private CarService carService;
 	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home(Map<String,Object> params) {
+		return "home";
+	}
+
 	@RequestMapping(value = "/cars", method = RequestMethod.GET)
 	public String carList(Map<String,Object> params) {
 		final List<CarTo> allCars = carService.findAllCars();

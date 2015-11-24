@@ -4,15 +4,22 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "WHEELS")
+@Table(name = DriveWheelsEntity.tableName)
 public class DriveWheelsEntity {
 
+	protected static final String tableName = "WHEELS";
+	private static final String sequenceName = "WHEELS_SEQ";
+	
 	@Id
-//	@OneToOne(mappedBy = "wheels")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequenceName)
+	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
 	private BigDecimal id;
 	
 	@Column(nullable = false, length = 20)

@@ -10,23 +10,23 @@ import javax.persistence.criteria.Root;
 import pl.wroc.edu.jpa.dao.CarDao;
 import pl.wroc.edu.model.entity.CarEntity;
 
-public class CarDaoImpl extends AbstractDao<CarEntity, BigDecimal> implements CarDao {
+public class CarDaoImpl extends AbstractDao<CarEntity, BigDecimal>implements CarDao {
 
 	@Override
 	public List<CarEntity> findByLocation(String location) {
-		return entityManager.createQuery(selectFromCarEntityEqual("location",location)).getResultList();
+		return entityManager.createQuery(selectFromCarEntityEqual("location", location)).getResultList();
 	}
 
 	@Override
 	public List<CarEntity> findByManufacturer(String manufacturer) {
-		return entityManager.createQuery(selectFromCarEntityEqual("manufacturer",manufacturer)).getResultList();
+		return entityManager.createQuery(selectFromCarEntityEqual("manufacturer", manufacturer)).getResultList();
 	}
 
 	@Override
 	public List<CarEntity> findByModelName(String modelName) {
-		return entityManager.createQuery(selectFromCarEntityEqual("model",modelName)).getResultList();
+		return entityManager.createQuery(selectFromCarEntityEqual("model", modelName)).getResultList();
 	}
-	
+
 	private CriteriaQuery<CarEntity> selectFromCarEntityEqual(String column, String value) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<CarEntity> criteriaQuery = builder.createQuery(CarEntity.class);
@@ -35,5 +35,5 @@ public class CarDaoImpl extends AbstractDao<CarEntity, BigDecimal> implements Ca
 		criteriaQuery.where(builder.equal(root.get(column), value));
 		return criteriaQuery;
 	}
-	
+
 }

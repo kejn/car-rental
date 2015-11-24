@@ -4,46 +4,54 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CARS")
+@Table(name = CarEntity.tableName)
 public class CarEntity {
+	
+	protected static final String tableName = "CARS";
+	private static final String sequenceName = "CARS_SEQ";
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequenceName)
+	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
 	private BigDecimal id;
 	
 	@OneToOne
-	@JoinColumn(name = "model")
+	@JoinColumn(name = "model", nullable = false)
 	private ModelEntity model;
 	
 	@OneToOne
-	@JoinColumn(name = "color")
+	@JoinColumn(name = "color", nullable = false)
 	private ColorEntity color;
 	
 	@OneToOne
-	@JoinColumn(name = "body")
+	@JoinColumn(name = "body", nullable = false)
 	private BodyEntity body;
 
 	@OneToOne
-	@JoinColumn(name = "transmission")
+	@JoinColumn(name = "transmission", nullable = false)
 	private TransmissionEntity transmission;
 
 	@OneToOne
-	@JoinColumn(name = "wheels")
+	@JoinColumn(name = "wheels", nullable = false)
 	private DriveWheelsEntity driveWheels;
 
 	@OneToOne
-	@JoinColumn(name = "location")
+	@JoinColumn(name = "location", nullable = false)
 	private LocationEntity location;
 
-	@Column
+	@Column(nullable = false)
 	private Short weight; // Kilograms [kg]
 
-	@Column
+	@Column(nullable = false)
 	private Short power; // Horsepower [hp]
 	
 	protected CarEntity(){

@@ -5,24 +5,32 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BOOKING")
+@Table(name = BookingEntity.tableName)
 public class BookingEntity {
+	
+	protected static final String tableName = "BOOKING";
+	private static final String sequenceName = "BOOKING_SEQ";
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequenceName)
+	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
 	private BigDecimal id;
 	
 	@OneToOne
-	@JoinColumn(name = "car")
+	@JoinColumn(name = "car", nullable = false)
 	private CarEntity car;
 
 	@OneToOne
-	@JoinColumn(name = "renter")
+	@JoinColumn(name = "renter", nullable = false)
 	private RenterEntity renter;
 
 	@Column(nullable = false)

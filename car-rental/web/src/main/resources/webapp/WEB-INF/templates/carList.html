@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
-    <meta charset="UTF-8" />
-    <title>CarList</title>
-    <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
+<meta charset="UTF-8" />
+<title>CarList</title>
+<link rel="stylesheet" th:href="@{/static/application.css}"
+	href="/static/application.css" />
 </head>
 <body>
-<h1>Woo-Hoo!</h1>
+	<div th:include=" fragments :: nav"></div>
+	<div class="content">
+	    <table>
+	    	<tr>
+	    		<th>ID</th>
+	    		<th>Model</th>
+	    		<th>Rok produkcji</th>
+	    		<th>Moc</th>
+	    		<th>Lokalizacja</th>
+	    	</tr>
+	    	<tr th:each="car : ${cars}">
+	        	<td th:text="${car.id}">id</td>
+	        	<td th:text="${car.model}">model</td>
+	        	<td th:text="${car.yearOfProduction}">year</td>
+	        	<td th:text="${car.power}">power</td>
+	        	<td th:text="${car.location}">location</td>
+	        </tr>
+	    </table>
+    </div>
 </body>
 </html>

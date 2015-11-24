@@ -7,20 +7,28 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.handler.AbstractHandlerMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
-@EnableWebMvc
 public class MvcConfig extends WebMvcConfigurationSupport {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+		registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
 	}
+	
+	@Override
+    @Bean
+    public HandlerMapping resourceHandlerMapping() {
+        AbstractHandlerMapping handlerMapping = (AbstractHandlerMapping) super.resourceHandlerMapping();
+        handlerMapping.setOrder(-1);
+        return handlerMapping;
+    }
 
 	@Override
 	protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

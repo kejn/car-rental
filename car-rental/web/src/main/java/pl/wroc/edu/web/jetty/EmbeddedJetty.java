@@ -19,16 +19,16 @@ import pl.wroc.edu.web.config.WebConfig;
 public class EmbeddedJetty {
 
 	private static final Logger logger = LoggerFactory.getLogger(EmbeddedJetty.class);
-	
+
 	private static final int defaultPort = 9721;
 	private static final String contextPath = "/car-rental/";
 	private static final String mappingUrl = "/*";
 	private static final String defaultProfile = "dev";
 	private static final String webAppDirectory = "webapp";
-	
-	private EmbeddedJetty(){
+
+	private EmbeddedJetty() {
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		new EmbeddedJetty().startJetty(defaultPort);
 	}
@@ -38,9 +38,10 @@ public class EmbeddedJetty {
 		server.setHandler(getServletContextHandler(getContext()));
 		server.start();
 		logger.info("Server started at port {}", port);
+		logger.info("URL: {}", server.getURI());
 		server.join();
 	}
-	
+
 	private ServletContextHandler getServletContextHandler(WebApplicationContext context) throws IOException {
 		ServletContextHandler contextHandler = new ServletContextHandler();
 		contextHandler.setErrorHandler(null);
@@ -50,13 +51,12 @@ public class EmbeddedJetty {
 		contextHandler.setResourceBase(new ClassPathResource(webAppDirectory).getURI().toString());
 		return contextHandler;
 	}
-	
+
 	private WebApplicationContext getContext() {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(WebConfig.class, DataAccessConfig.class);
 		context.getEnvironment().setDefaultProfiles(defaultProfile);
 		return context;
 	}
-	
-	
+
 }
