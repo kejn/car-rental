@@ -28,7 +28,7 @@ public class CarTo implements IdAware {
 		this.weight = weight;
 		this.power = power;
 	}
-
+	
 	@Override
 	public BigDecimal getId() {
 		return id;

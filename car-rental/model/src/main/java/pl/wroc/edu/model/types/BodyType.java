@@ -6,5 +6,5 @@ public enum BodyType {
 	MPV,
 	SUV,
 	COUPE,
-	TRUCK
+	COMBI
 }

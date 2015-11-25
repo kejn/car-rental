@@ -13,6 +13,11 @@ public class ModelTo extends AbstractIdName {
 		this.yearOfProduction = yearOfProduction;
 	}
 	
+	@Override
+	public String toString() {
+		return manufacturer.name + " " + name;
+	}
+	
 	public ManufacturerTo getManufacturer() {
 		return manufacturer;
 	}
