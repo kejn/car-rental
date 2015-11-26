@@ -10,4 +10,8 @@ public class EmptyString {
 	public static String safeValue(String string) {
 		return string == null ? "null" : string;
 	}
+	
+	public static boolean nullOrEmpty(String string) {
+		return string==null || string.isEmpty();
+	}
 }

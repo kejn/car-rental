@@ -23,20 +23,15 @@
 		<div id="search" class="content whitebg">
 			<form>
 				<div>
-					Producent: <select name="manufacturer">
-						<option></option>
+					Producent: <select id="manufacturer" name="manufacturer">
+						<option label="* (Wszyscy producenci)" value="" />
 						<option th:each="manufacturer : ${manufacturers}"
 							th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
 					</select>
 				</div>
-				<!-- <br />Model: <select name="model">
-					<option></option>
-					<option th:each="model : ${models}" th:text="${model.name}"
-						th:value="${model.name}" />
-				</select> -->
 				<div>
-					Lokalizacja: <select name="location">
-						<option></option>
+					Lokalizacja: <select id="location" name="location">
+						<option label="* (Wszystkie miasta)" value="" />
 						<option th:each="location : ${locations}"
 							th:text="${location.name}" th:value="${location.name}" />
 					</select>
@@ -45,6 +40,16 @@
 					<input type="submit" value="Szukaj" />
 				</div>
 			</form>
+			<script th:inline="javascript">
+			/*<![CDATA[*/
+				if([[${manufacturers.size()}]] == 1) {
+					document.getElementById('manufacturer').selectedIndex = "1";
+			    }
+				if([[${locations.size()}]] == 1) {
+					document.getElementById('location').selectedIndex = "1";
+			    }
+			/*]]>*/
+			</script>
 		</div>
 	</div>
 </body>

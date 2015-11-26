@@ -55,6 +55,12 @@ div#nav a:hover {
     margin: 5px;
 }
 
+#search form div select {
+    display: inline;
+    margin: 5px;
+    overflow: hidden;
+}
+
 /* MY SETTINGS carList*/
 table {
 	width: 100%;

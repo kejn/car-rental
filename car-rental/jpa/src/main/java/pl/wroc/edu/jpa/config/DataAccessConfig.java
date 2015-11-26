@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @Import(DatabaseConfig.class)
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "pl.wroc.edu.jpa.repository" })
+@EnableJpaRepositories(basePackages = { "pl.wroc.edu.jpa.repository", "pl.wroc.edu.jpa.dao" })
 public class DataAccessConfig {
 
 	public static final String PERSISTANCE_UNIT_NAME = "carRentalPersistance";
