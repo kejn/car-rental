@@ -18,6 +18,15 @@ public class ModelTo extends AbstractIdName {
 		return manufacturer.name + " " + name;
 	}
 	
+	@Override
+	public boolean equals(Object object) {
+		if(super.equals(object) && object instanceof ModelTo) {
+			ModelTo other = (ModelTo) object;
+			return other.manufacturer.equals(manufacturer) && other.yearOfProduction.equals(yearOfProduction);
+		}
+		return false;
+	}
+	
 	public ManufacturerTo getManufacturer() {
 		return manufacturer;
 	}

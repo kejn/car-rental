@@ -16,6 +16,20 @@ public abstract class AbstractIdName implements IdAware, NameAware {
 	}
 	
 	@Override
+	public boolean equals(Object object) {
+		if(object instanceof AbstractIdName) {
+			AbstractIdName other = (AbstractIdName) object;
+			return other.id.equals(id) && other.name.equals(name);
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+
+	@Override
 	public BigDecimal getId() {
 		return id;
 	}
@@ -24,4 +38,5 @@ public abstract class AbstractIdName implements IdAware, NameAware {
 	public String getName() {
 		return name;
 	}
+	
 }

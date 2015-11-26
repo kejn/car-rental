@@ -11,7 +11,7 @@ import pl.wroc.edu.model.types.ColorType;
 import pl.wroc.edu.model.types.DriveWheelsType;
 import pl.wroc.edu.model.types.TransmissionType;
 
-public class _To_TypeTestWithId1 {
+public class _To_TypeTestWithId1Test {
 	
 	private final BigDecimal id = BigDecimal.ONE;
 

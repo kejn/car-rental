@@ -10,6 +10,11 @@ public abstract class AbstractIdType implements IdAware, TypeAware {
 	protected BigDecimal id;
 	protected Enum<?> type;
 	
+	public AbstractIdType(BigDecimal id, Enum<?> type) {
+		this.id = id;
+		this.type = type;
+	}
+
 	@Override
 	public BigDecimal getId() {
 		return id;
@@ -20,8 +25,4 @@ public abstract class AbstractIdType implements IdAware, TypeAware {
 		return type;
 	}
 	
-	public AbstractIdType(BigDecimal id, Enum<?> type) {
-		this.id = id;
-		this.type = type;
-	}
 }

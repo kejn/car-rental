@@ -45,12 +45,17 @@ div#nav a:hover {
 	border-bottom: 2px solid deepskyblue;
 }
 
-/* MY SETTINGS home */
-.sample {
-    color: white;
+/* MY SETTINGS #search */
+#search form {
+    padding: 5px;
 }
 
-/* MY SETTINGS bookList*/
+#search form div {
+    display: inline;
+    margin: 5px;
+}
+
+/* MY SETTINGS carList*/
 table {
 	width: 100%;
 	margin-top: 20px;

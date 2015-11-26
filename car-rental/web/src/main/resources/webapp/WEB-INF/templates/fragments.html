@@ -19,5 +19,33 @@
 			</div>
 		</div>
 	</div>
+	<div th:fragment="search">
+		<div id="search" class="content whitebg">
+			<form>
+				<div>
+					Producent: <select name="manufacturer">
+						<option></option>
+						<option th:each="manufacturer : ${manufacturers}"
+							th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
+					</select>
+				</div>
+				<!-- <br />Model: <select name="model">
+					<option></option>
+					<option th:each="model : ${models}" th:text="${model.name}"
+						th:value="${model.name}" />
+				</select> -->
+				<div>
+					Lokalizacja: <select name="location">
+						<option></option>
+						<option th:each="location : ${locations}"
+							th:text="${location.name}" th:value="${location.name}" />
+					</select>
+				</div>
+				<div>
+					<input type="submit" value="Szukaj" />
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
