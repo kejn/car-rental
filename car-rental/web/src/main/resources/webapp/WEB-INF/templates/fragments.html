@@ -21,32 +21,46 @@
 	</div>
 	<div th:fragment="search">
 		<div id="search" class="content whitebg">
-			<form>
+			<form name="search">
 				<div>
-					Producent: <select id="manufacturer" name="manufacturer">
-						<option label="* (Wszyscy producenci)" value="" />
+					Producent: <select id="manufacturer" name="manufacturer" onchange='this.form.submit()'>
+						<option label="* (Wszyscy producenci)" value="">* (Wszyscy producenci)</option>
 						<option th:each="manufacturer : ${manufacturers}"
 							th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
 					</select>
+					<a id="clearM" href="#" onclick="javscript:clearM();" alt="Wyczyść filtr">(x)</a>
 				</div>
 				<div>
-					Lokalizacja: <select id="location" name="location">
-						<option label="* (Wszystkie miasta)" value="" />
+					Lokalizacja: <select id="location" name="location" onchange='this.form.submit()'>
+						<option label="* (Wszystkie miasta)" value="">* (Wszystkie miasta)</option>
 						<option th:each="location : ${locations}"
 							th:text="${location.name}" th:value="${location.name}" />
 					</select>
-				</div>
-				<div>
-					<input type="submit" value="Szukaj" />
+					<a id="clearL" href="#" onclick="javscript:clearL();" alt="Wyczyść filtr">(x)</a>
 				</div>
 			</form>
 			<script th:inline="javascript">
 			/*<![CDATA[*/
+			    function clearM() {
+			    	document.getElementById('manufacturer').selectedIndex = "0";
+			    	document.forms["search"].submit();
+				}
+			    function clearL() {
+			    	document.getElementById('location').selectedIndex = "0";
+			    	document.forms["search"].submit();
+				}
+			    
 				if([[${manufacturers.size()}]] == 1) {
 					document.getElementById('manufacturer').selectedIndex = "1";
+					document.getElementById('clearM').style.visibility = "visible";
+			    } else {
+					document.getElementById('clearM').style.visibility = "none";
 			    }
 				if([[${locations.size()}]] == 1) {
 					document.getElementById('location').selectedIndex = "1";
+					document.getElementById('clearL').style.visibility = "visible";
+			    } else {
+					document.getElementById('clearL').style.visibility = "none";
 			    }
 			/*]]>*/
 			</script>

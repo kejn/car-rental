@@ -6,7 +6,7 @@ body, p, a, div, table, tr, td, th, span {
 	font-size: 12pt;
 }
 body {
-	background-color: #3D3D3D;
+	background-color: black;
 }
 .content {
 	width: 700px;
@@ -64,12 +64,12 @@ div#nav a:hover {
 /* MY SETTINGS carList*/
 table {
 	width: 100%;
-	margin-top: 20px;
-	border-spacing: 0;
+	border-spacing: 0 1px;
 }
 
 table tr:nth-child(odd) {
-	background-color: #99E5FF;
+	color: white;
+	background-color: deepskyblue;
 }
 table tr:nth-child(even) {
 	background-color: ghostwhite;
@@ -84,13 +84,11 @@ table tr:hover td form input[type=submit] {
 
 table tr td,th {
 	padding: 10px;
-	border-top: 1px solid black;
-	/* border-bottom: 1px solid black; */
 	text-align: left;
 }
 table tr th {
 	border: none;
-	background-color: deepskyblue;
+	background-color: #00a8df;
 }
 
 input[type=submit] {
