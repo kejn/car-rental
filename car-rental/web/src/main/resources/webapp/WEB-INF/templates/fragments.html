@@ -28,7 +28,7 @@
 						<option th:each="manufacturer : ${manufacturers}"
 							th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
 					</select>
-					<a id="clearM" href="#" onclick="javscript:clearM();" alt="Wyczyść filtr">(x)</a>
+					<a id="clearM" href="#" onclick="javscript:clearM();">(x)</a>
 				</div>
 				<div>
 					Lokalizacja: <select id="location" name="location" onchange='this.form.submit()'>
@@ -36,7 +36,7 @@
 						<option th:each="location : ${locations}"
 							th:text="${location.name}" th:value="${location.name}" />
 					</select>
-					<a id="clearL" href="#" onclick="javscript:clearL();" alt="Wyczyść filtr">(x)</a>
+					<a id="clearL" href="#" onclick="javscript:clearL();">(x)</a>
 				</div>
 			</form>
 			<script th:inline="javascript">
@@ -52,15 +52,13 @@
 			    
 				if([[${manufacturers.size()}]] == 1) {
 					document.getElementById('manufacturer').selectedIndex = "1";
-					document.getElementById('clearM').style.visibility = "visible";
 			    } else {
-					document.getElementById('clearM').style.visibility = "none";
+					document.getElementById('clearM').style.visibility = "hidden";
 			    }
 				if([[${locations.size()}]] == 1) {
 					document.getElementById('location').selectedIndex = "1";
-					document.getElementById('clearL').style.visibility = "visible";
 			    } else {
-					document.getElementById('clearL').style.visibility = "none";
+					document.getElementById('clearL').style.visibility = "hidden";
 			    }
 			/*]]>*/
 			</script>
