@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,27 +24,27 @@ public class CarEntity {
 	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
 	private BigDecimal id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "model", nullable = false)
 	private ModelEntity model;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "color", nullable = false)
 	private ColorEntity color;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "body", nullable = false)
 	private BodyEntity body;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "transmission", nullable = false)
 	private TransmissionEntity transmission;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "wheels", nullable = false)
 	private DriveWheelsEntity driveWheels;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "location", nullable = false)
 	private LocationEntity location;
 

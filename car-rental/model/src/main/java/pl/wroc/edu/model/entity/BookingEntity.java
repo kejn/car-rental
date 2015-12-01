@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,11 +25,11 @@ public class BookingEntity {
 	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
 	private BigDecimal id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "car", nullable = false)
 	private CarEntity car;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "renter", nullable = false)
 	private RenterEntity renter;
 

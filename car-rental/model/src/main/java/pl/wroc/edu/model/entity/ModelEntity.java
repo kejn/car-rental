@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,7 +27,7 @@ public class ModelEntity {
 	@Column(nullable = false, length = 40)
 	private String name;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "manufacturer", nullable = false)
 	private ManufacturerEntity manufacturer;
 	

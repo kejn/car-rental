@@ -1,5 +1,6 @@
 package pl.wroc.edu.web.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -31,14 +32,27 @@ public class CarController {
 	public String carList(Map<String, Object> params,
 			@RequestParam(required = false) String manufacturer,
 			@RequestParam(required = false) String location) {
-		final List<CarTo> allCars = carService.findCarsByParameters(manufacturer,location);
-		final List<LocationTo> uniqueLocations = DataExtractor.uniqueLocations(allCars);
-		final List<ModelTo> uniqueModels = DataExtractor.uniqueModels(allCars);
+		final List<CarTo> cars = carService.findCarsByParameters(manufacturer,location);
+		putStaticData(params, cars);
+		params.put("cars", cars);
+		return "carList";
+	}
+
+	@RequestMapping(value = "/cars/details", method = RequestMethod.GET)
+	public String carDetails(Map<String, Object> params,
+			@RequestParam(required = false) BigDecimal id) {
+//		final List<CarTo> cars = carService.findCarBookings(id);
+//		putStaticData(params, cars);
+//		params.put("cars", cars);
+		return "carDetails";
+	}
+	
+	private void putStaticData(Map<String, Object> params, List<CarTo> carList) {
+		final List<LocationTo> uniqueLocations = DataExtractor.uniqueLocations(carList);
+		final List<ModelTo> uniqueModels = DataExtractor.uniqueModels(carList);
 		final List<ManufacturerTo> uniqueManufacturers = DataExtractor.uniqueManufacturers(uniqueModels);
-		params.put("cars", allCars);
 		params.put("locations", uniqueLocations);
 		params.put("manufacturers", uniqueManufacturers);
-		return "carList";
 	}
 
 }

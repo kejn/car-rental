@@ -27,4 +27,5 @@ public class CarServiceImpl implements CarService {
 	public List<CarTo> findCarsByParameters(String manufacturer, String location) {
 		return CarMapper.map2To(carDao.findByParameters(manufacturer, location));
 	}
+
 }
