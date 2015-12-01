@@ -2,7 +2,7 @@
 body, p, a, div, table, tr, td, th, span {
 	margin: 0;
 	padding: 0;
-	font-family: arial;
+	font-family: Arial;
 	font-size: 12pt;
 }
 body {
@@ -61,32 +61,32 @@ div#nav a:hover {
     overflow: hidden;
 }
 
-/* MY SETTINGS carList*/
-table {
+/* MY SETTINGS #preview*/
+table#preview {
 	width: 100%;
 	border-spacing: 0 1px;
 }
 
-table tr:nth-child(odd) {
+table#preview tr:nth-child(odd) {
 	color: white;
 	background-color: deepskyblue;
 }
-table tr:nth-child(even) {
+table#preview tr:nth-child(even) {
 	background-color: ghostwhite;
 }
 
-table tr td form input[type=submit] {
+table#preview tr td form input[type=submit] {
 	visibility: hidden;
 }
-table tr:hover td form input[type=submit] {
+table#preview tr:hover td form input[type=submit] {
 	visibility: visible;
 }
 
-table tr td,th {
+table#preview tr td,th {
 	padding: 10px;
 	text-align: left;
 }
-table tr th {
+table#preview tr th {
 	border: none;
 	background-color: #00a8df;
 }
@@ -105,4 +105,29 @@ input[type=submit]:active {
 	background-color: #A6FEFF;
 	border: 1px solid #26A0DA;
 	cursor: pointer;
+}
+
+/* MY SETTINGS #details*/
+#detailDiv {
+	overflow: hidden;
+}
+#detailDiv form {
+	float: right;
+}
+#detailDiv table#details {
+	float: left;
+	border-spacing: 0;
+}
+#detailDiv table#details th {
+	margin: 0;
+	text-align: right;
+	padding: 5px 10px;
+	border-bottom: 1px solid black;
+}
+#detailDiv table#details td {
+	margin: 0;
+	padding: 5px 10px;
+	border-width: 0 1px 1px 0;
+	border-style: solid;
+	border-color: black;
 }

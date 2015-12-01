@@ -1,5 +1,6 @@
 package pl.wroc.edu.jpa.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public List<CarTo> findCarsByParameters(String manufacturer, String location) {
 		return CarMapper.map2To(carDao.findByParameters(manufacturer, location));
+	}
+
+	@Override
+	public CarTo findCarById(BigDecimal id) {
+		return CarMapper.map(carDao.findOne(id));
 	}
 
 }

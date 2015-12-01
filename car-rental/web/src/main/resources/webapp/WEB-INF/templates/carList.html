@@ -10,7 +10,7 @@
 	<div th:include=" fragments :: nav"></div>
 	<div th:include=" fragments :: search"></div>
 	<div class="content">
-	    <table>
+	    <table id="preview">
 	    	<tr>
 	    		<th>ID</th>
 	    		<th>Model</th>
@@ -28,7 +28,10 @@
 	        	<td th:text="${car.power}">power</td>
 	        	<td th:text="${car.location.name}">location</td>
 	        	<td>
-	        		<input type="submit" value="Szczegóły >" />
+	        		<form th:action="@{/cars/details}">
+	        			<input name="id" type="text" th:value="${car.id}" hidden="true" />
+	        			<input type="submit" value="Szczegóły >" />
+        			</form>
 	        	</td>
 	        </tr>
 	    </table>

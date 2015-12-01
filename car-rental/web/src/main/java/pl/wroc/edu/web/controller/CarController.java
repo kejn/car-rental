@@ -40,10 +40,9 @@ public class CarController {
 
 	@RequestMapping(value = "/cars/details", method = RequestMethod.GET)
 	public String carDetails(Map<String, Object> params,
-			@RequestParam(required = false) BigDecimal id) {
-//		final List<CarTo> cars = carService.findCarBookings(id);
-//		putStaticData(params, cars);
-//		params.put("cars", cars);
+			@RequestParam BigDecimal id) {
+		final CarTo car = carService.findCarById(id);
+		params.put("car", car);
 		return "carDetails";
 	}
 	

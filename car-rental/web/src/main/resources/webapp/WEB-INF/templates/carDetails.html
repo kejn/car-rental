@@ -2,36 +2,64 @@
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
 <meta charset="UTF-8" />
-<title>CarList</title>
+<title>CarDetails</title>
 <link rel="stylesheet" th:href="@{/static/application.css}"
 	href="/static/application.css" />
 </head>
 <body>
 	<div th:include=" fragments :: nav"></div>
-	<div th:include=" fragments :: search"></div>
-	<div class="content">
-	    <table>
-	    	<tr>
-	    		<th>ID</th>
-	    		<th>Model</th>
-	    		<th>Typ nadwozia</th>
-	    		<th>Rok produkcji</th>
-	    		<th>Moc [KM]</th>
-	    		<th>Lokalizacja</th>
-	    		<th>&nbsp;</th>
-	    	</tr>
-	    	<tr th:each="car : ${cars}">
-	        	<td th:text="${car.id}">id</td>
-	        	<td th:text="${car.model}">model</td>
-	        	<td th:text="${car.body.type}">body</td>
-	        	<td th:text="${car.model.yearOfProduction}">year</td>
-	        	<td th:text="${car.power}">power</td>
-	        	<td th:text="${car.location.name}">location</td>
-	        	<td>
-	        		<input type="button" value="Szczegóły >" />
-	        	</td>
-	        </tr>
-	    </table>
+	<div class="content whitebg">
+		<div id="detailDiv">
+		    <table id="details">
+		    	<tr>
+		    		<th>ID</th>
+		    		<td th:text="${car.id}">id</td>
+	    		</tr>
+	    		<tr>
+		    		<th>Producent</th>
+		    		<td th:text="${car.model.manufacturer.name}">manufacturer</td>
+		    	</tr>
+		    	<tr>	
+		    		<th>Model</th>
+		    		<td th:text="${car.model.name}">model</td>
+	    		</tr>
+		    	<tr>
+		    		<th>Rok produkcji</th>
+		    		<td th:text="${car.model.yearOfProduction}">year</td>
+	    		</tr>
+	    		<tr>
+	    			<th>Kolor</th>
+	    			<td th:text="${car.color.type}">color</td>
+	    		</tr>
+	    		<tr>
+		    		<th>Typ nadwozia</th>
+		    		<td th:text="${car.body.type}">body</td>
+		    	</tr>
+		    	<tr>
+		    		<th>Skrzynia biegów</th>
+		    		<td th:text="${car.transmission.type}">transmission</td>
+		    	</tr>
+		    	<tr>
+		    		<th>Napęd</th>
+		    		<td th:text="${car.driveWheels.type}">wheels</td>
+		    	</tr>
+	    		<tr>
+		    		<th>Moc [KM]</th>
+		    		<td th:text="${car.power}">power</td>
+	    		</tr>
+	    		<tr>
+	    			<th>Masa [Kg]</th>
+	    			<td th:text="${car.weight}">weight</td>
+	    		</tr>
+	    		<tr>
+		    		<th>Lokalizacja</th>
+		    		<td th:text="${car.location.name}">location</td>
+	    		</tr>
+		    </table>
+		    <form>
+	    		<input type="submit" value="Wypożycz teraz!" />
+    		</form>
+	    </div>
     </div>
 </body>
 </html>
