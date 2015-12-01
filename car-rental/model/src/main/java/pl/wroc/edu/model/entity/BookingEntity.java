@@ -40,12 +40,12 @@ public class BookingEntity {
 	private Date until;
 
 	@Column(nullable = false)
-	private Float price; // PLN
+	private Double price; // PLN
 	
 	protected BookingEntity(){
 	}
 	
-	public BookingEntity(BigDecimal id, CarEntity car, RenterEntity renter, Date since, Date until, Float price) {
+	public BookingEntity(BigDecimal id, CarEntity car, RenterEntity renter, Date since, Date until, Double price) {
 		this.id = id;
 		this.car = car;
 		this.renter = renter;
@@ -94,11 +94,11 @@ public class BookingEntity {
 		this.until = until;
 	}
 
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 }

@@ -10,4 +10,8 @@ public class DriveWheelsMapper {
 		return new DriveWheelsTo(driveWheels.getId(), DriveWheelsType.valueOf(driveWheels.getType()));
 	}
 
+	public static DriveWheelsEntity map(DriveWheelsTo driveWheels) {
+		return new DriveWheelsEntity(driveWheels.getId(), driveWheels.getType().toString());
+	}
+
 }

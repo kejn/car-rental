@@ -32,7 +32,7 @@ div#nav .content div {
 	padding: 10px;
 	font-weight: bold;
 }
-.content a, p, span {
+.content a, .content p, .content span {
 	font-size: 16pt;
 	text-decoration: none;
 	color: deepskyblue;
@@ -131,3 +131,9 @@ input[type=submit]:active {
 	border-style: solid;
 	border-color: black;
 }
+
+form#renter {
+	padding: 10px;
+	width: 50%;
+}
+

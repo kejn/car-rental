@@ -10,4 +10,8 @@ public class TransmissionMapper {
 		return new TransmissionTo(transmission.getId(), TransmissionType.valueOf(transmission.getType()));
 	}
 
+	public static TransmissionEntity map(TransmissionTo transmission) {
+		return new TransmissionEntity(transmission.getId(), transmission.getType().toString());
+	}
+
 }

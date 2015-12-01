@@ -9,4 +9,8 @@ public class LocationMapper {
 		return new LocationTo(location.getId(), location.getCity());
 	}
 
+	public static LocationEntity map(LocationTo location) {
+		return new LocationEntity(location.getId(), location.getName());
+	}
+
 }

@@ -10,4 +10,8 @@ public class ColorMapper {
 		return new ColorTo(color.getId(), ColorType.valueOf(color.getType()));
 	}
 
+	public static ColorEntity map(ColorTo color) {
+		return new ColorEntity(color.getId(), color.getType().toString());
+	}
+
 }

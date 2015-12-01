@@ -33,5 +33,4 @@ public class CarServiceImpl implements CarService {
 	public CarTo findCarById(BigDecimal id) {
 		return CarMapper.map(carDao.findOne(id));
 	}
-
 }

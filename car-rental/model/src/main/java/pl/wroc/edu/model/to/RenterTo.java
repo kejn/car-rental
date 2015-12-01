@@ -51,4 +51,8 @@ public class RenterTo extends AbstractIdName {
 		this.email = email;
 	}
 
+	public RenterTo() {
+		super();
+	}
+
 }

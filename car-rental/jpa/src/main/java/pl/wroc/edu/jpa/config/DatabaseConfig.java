@@ -25,30 +25,12 @@ public class DatabaseConfig {
 	@Value("${oracle.url}")
 	private String url;
 
-//	@Value("${oracle.driver}")
-//	private String driver;
-//	
-//	@Value("${oracle.server}")
-//	private String server;
-//
-//	@Value("${oracle.port}")
-//	private String port;
-//
-//	@Value("${oracle.service}")
-//	private String service;
-	
-
 	@Bean
 	public DataSource dataSource() throws SQLException {
 		OracleDataSource dataSource = new OracleDataSource();
 		dataSource.setUser(user);
 		dataSource.setPassword(password);
 		dataSource.setURL(url);
-//		dataSource.setDriverType(driver);
-//		dataSource.setServerName(server);
-//		dataSource.setServiceName(service);
-//		System.out.println(user);
-//		dataSource.setPortNumber(Integer.parseInt(port));
 		return dataSource;
 	}
 	

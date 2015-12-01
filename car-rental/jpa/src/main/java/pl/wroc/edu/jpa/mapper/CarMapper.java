@@ -8,20 +8,24 @@ import pl.wroc.edu.model.to.CarTo;
 
 public class CarMapper {
 
-	public static CarTo map(CarEntity carEntity) {
-		return new CarTo(carEntity.getId(),
-				ModelMapper.map(carEntity.getModel()),
-				ColorMapper.map(carEntity.getColor()),
-				BodyMapper.map(carEntity.getBody()),
-				TransmissionMapper.map(carEntity.getTransmission()),
-				DriveWheelsMapper.map(carEntity.getDriveWheels()),
-				LocationMapper.map(carEntity.getLocation()),
-				carEntity.getWeight(),
-				carEntity.getPower());
+	public static CarTo map(CarEntity car) {
+		return new CarTo(car.getId(),
+				ModelMapper.map(car.getModel()),
+				ColorMapper.map(car.getColor()),
+				BodyMapper.map(car.getBody()),
+				TransmissionMapper.map(car.getTransmission()),
+				DriveWheelsMapper.map(car.getDriveWheels()),
+				LocationMapper.map(car.getLocation()),
+				car.getWeight(),
+				car.getPower());
 	}
 
 	public static List<CarTo> map2To(List<CarEntity> cars) {
 		return cars.stream().map(CarMapper::map).collect(Collectors.toList());
+	}
+
+	public static CarEntity map(CarTo car) {
+		return new CarEntity(car.getId(), ModelMapper.map(car.getModel()), ColorMapper.map(car.getColor()), BodyMapper.map(car.getBody()), TransmissionMapper.map(car.getTransmission()), DriveWheelsMapper.map(car.getDriveWheels()), LocationMapper.map(car.getLocation()), car.getWeight(), car.getPower());
 	}
 
 }

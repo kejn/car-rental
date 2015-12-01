@@ -10,4 +10,8 @@ public class BodyMapper {
 		return new BodyTo(body.getId(), BodyType.valueOf(body.getType()));
 	}
 
+	public static BodyEntity map(BodyTo body) {
+		return new BodyEntity(body.getId(), body.getType().toString());
+	}
+
 }

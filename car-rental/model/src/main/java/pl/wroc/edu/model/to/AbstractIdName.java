@@ -15,6 +15,9 @@ public abstract class AbstractIdName implements IdAware, NameAware {
 		this.name = name;
 	}
 	
+	public AbstractIdName() {
+	}
+
 	@Override
 	public boolean equals(Object object) {
 		if(object instanceof AbstractIdName) {

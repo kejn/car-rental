@@ -5,61 +5,111 @@
 <title>CarDetails</title>
 <link rel="stylesheet" th:href="@{/static/application.css}"
 	href="/static/application.css" />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$(".datepicker").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
+	});
+	/* $(function() {
+		$("#datepickerUntil").datepicker({ dateFormat: 'yy-mm-dd' });
+	}); */
+</script>
 </head>
 <body>
-	<div th:include=" fragments :: nav"></div>
+	<div th:include="fragments :: nav"></div>
 	<div class="content whitebg">
 		<div id="detailDiv">
-		    <table id="details">
-		    	<tr>
-		    		<th>ID</th>
-		    		<td th:text="${car.id}">id</td>
-	    		</tr>
-	    		<tr>
-		    		<th>Producent</th>
-		    		<td th:text="${car.model.manufacturer.name}">manufacturer</td>
-		    	</tr>
-		    	<tr>	
-		    		<th>Model</th>
-		    		<td th:text="${car.model.name}">model</td>
-	    		</tr>
-		    	<tr>
-		    		<th>Rok produkcji</th>
-		    		<td th:text="${car.model.yearOfProduction}">year</td>
-	    		</tr>
-	    		<tr>
-	    			<th>Kolor</th>
-	    			<td th:text="${car.color.type}">color</td>
-	    		</tr>
-	    		<tr>
-		    		<th>Typ nadwozia</th>
-		    		<td th:text="${car.body.type}">body</td>
-		    	</tr>
-		    	<tr>
-		    		<th>Skrzynia biegów</th>
-		    		<td th:text="${car.transmission.type}">transmission</td>
-		    	</tr>
-		    	<tr>
-		    		<th>Napęd</th>
-		    		<td th:text="${car.driveWheels.type}">wheels</td>
-		    	</tr>
-	    		<tr>
-		    		<th>Moc [KM]</th>
-		    		<td th:text="${car.power}">power</td>
-	    		</tr>
-	    		<tr>
-	    			<th>Masa [Kg]</th>
-	    			<td th:text="${car.weight}">weight</td>
-	    		</tr>
-	    		<tr>
-		    		<th>Lokalizacja</th>
-		    		<td th:text="${car.location.name}">location</td>
-	    		</tr>
-		    </table>
-		    <form>
-	    		<input type="submit" value="Wypożycz teraz!" />
-    		</form>
-	    </div>
-    </div>
+			<table id="details">
+				<tr>
+					<th>ID</th>
+					<td th:text="${car.id}">id</td>
+				</tr>
+				<tr>
+					<th>Producent</th>
+					<td th:text="${car.model.manufacturer.name}">manufacturer</td>
+				</tr>
+				<tr>
+					<th>Model</th>
+					<td th:text="${car.model.name}">model</td>
+				</tr>
+				<tr>
+					<th>Rok produkcji</th>
+					<td th:text="${car.model.yearOfProduction}">year</td>
+				</tr>
+				<tr>
+					<th>Kolor</th>
+					<td th:text="${car.color.type}">color</td>
+				</tr>
+				<tr>
+					<th>Typ nadwozia</th>
+					<td th:text="${car.body.type}">body</td>
+				</tr>
+				<tr>
+					<th>Skrzynia biegów</th>
+					<td th:text="${car.transmission.type}">transmission</td>
+				</tr>
+				<tr>
+					<th>Napęd</th>
+					<td th:text="${car.driveWheels.type}">wheels</td>
+				</tr>
+				<tr>
+					<th>Moc [KM]</th>
+					<td th:text="${car.power}">power</td>
+				</tr>
+				<tr>
+					<th>Masa [Kg]</th>
+					<td th:text="${car.weight}">weight</td>
+				</tr>
+				<tr>
+					<th>Lokalizacja</th>
+					<td th:text="${car.location.name}">location</td>
+				</tr>
+			</table>
+			<form id="renter" th:action="@{/home}" method="post"
+				th:object="${booking}">
+				<span>Formularz rezerwacji</span>
+				<table>
+					<tr>
+						<th>Imię:</th>
+						<td><input name="name" type="text" th:field="*{renter.name}" /></td>
+					</tr>
+					<tr>
+						<th>Nazwisko:</th>
+						<td><input name="surname" type="text"
+							th:field="*{renter.surname}" /></td>
+					</tr>
+					<tr>
+						<th>Email:</th>
+						<td><input name="email" type="email"
+							th:field="*{renter.email}" required="required" /></td>
+					</tr>
+					<tr>
+						<th>Telefon:</th>
+						<td><input name="phone" type="tel" th:field="*{renter.phone}" /></td>
+					</tr>
+					<tr>
+						<th>Termin od:</th>
+						<td><input name="since" type="text" class="datepicker"
+							th:field="*{since}" required="required" /></td>
+					</tr>
+					<tr>
+						<th>Termin od:</th>
+						<td><input name="until" type="text" class="datepicker"
+							th:field="*{until}" required="required" /></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input name="car" type="text" th:object="${car}" hidden="true"/><input
+							width="100%" type="submit" value="Wypożycz teraz!" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
