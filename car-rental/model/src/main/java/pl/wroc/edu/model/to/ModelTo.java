@@ -15,14 +15,14 @@ public class ModelTo extends AbstractIdName {
 	
 	@Override
 	public String toString() {
-		return manufacturer.name + " " + name;
+		return manufacturer.getName() + " " + getName();
 	}
 	
 	@Override
 	public boolean equals(Object object) {
 		if(super.equals(object) && object instanceof ModelTo) {
 			ModelTo other = (ModelTo) object;
-			return other.manufacturer.equals(manufacturer) && other.yearOfProduction.equals(yearOfProduction);
+			return other.getManufacturer().equals(getManufacturer()) && other.getYearOfProduction().equals(getYearOfProduction());
 		}
 		return false;
 	}

@@ -10,6 +10,22 @@ public class RenterTo extends AbstractIdName {
 	private String email;
 	private String phone;
 
+	public RenterTo(BigDecimal id, String name, String surname, String email, String phone) {
+		super(id, name);
+		this.surname = surname;
+		this.email = email;
+		this.phone = phone;
+	}
+	
+	public RenterTo(BigDecimal id, String email) {
+		super(id, null);
+		this.email = email;
+	}
+	
+	public RenterTo() {
+		super();
+	}
+
 	public String getSurname() {
 		return EmptyString.safeValue(surname);
 	}
@@ -19,7 +35,7 @@ public class RenterTo extends AbstractIdName {
 	}
 
 	public String getEmail() {
-		return email;
+		return EmptyString.safeValue(email);
 	}
 
 	public void setEmail(String email) {
@@ -34,25 +50,5 @@ public class RenterTo extends AbstractIdName {
 		this.phone = phone;
 	}
 	
-	@Override
-	public String getName() {
-		return EmptyString.safeValue(name);
-	}
-
-	public RenterTo(BigDecimal id, String name, String surname, String email, String phone) {
-		super(id, name);
-		this.surname = surname;
-		this.email = email;
-		this.phone = phone;
-	}
-
-	public RenterTo(BigDecimal id, String email) {
-		super(id, null);
-		this.email = email;
-	}
-
-	public RenterTo() {
-		super();
-	}
 
 }

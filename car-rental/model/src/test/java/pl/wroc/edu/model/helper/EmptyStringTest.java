@@ -7,14 +7,14 @@ import org.junit.Test;
 public class EmptyStringTest {
 
 	@Test
-	public void testShouldReturnStringWithNullText() {
+	public void testShouldReturnStringWithNoText() {
 		// given
 		final String nullString = null;
 		// when
 		final String result = EmptyString.safeValue(nullString);
 		// then
 		assertNotNull(result);
-		assertEquals("null", result);
+		assertEquals("", result);
 	}
 
 	@Test

@@ -2,9 +2,6 @@
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
 <meta charset="UTF-8" />
-<title>Home</title>
-<link rel="stylesheet" th:href="@{/static/application.css}"
-	href="/static/application.css" />
 </head>
 <body>
 	<div th:fragment="nav">
@@ -20,48 +17,48 @@
 		</div>
 	</div>
 	<div th:fragment="search">
+		<script th:inline="javascript">
+		$(document).ready(function() {
+			if([[${manufacturers.size()}]] == 1) {
+				$("#manufacturer").prop("selectedIndex", 1);
+		    } else {
+				$("#clearM").css("visibility", "hidden");
+		    }
+			if([[${locations.size()}]] == 1) {
+				$("#location").prop("selectedIndex", 1);
+		    } else {
+				$("#clearL").css("visibility", "hidden");
+		    }
+			
+			var form = $("form[name='search']"); 
+		
+			$("#clearM").click(function() {
+				$("#manufacturer").prop("selectedIndex", 0);
+				form.submit();
+			});
+			$("#clearL").click(function() {
+				$("#location").prop("selectedIndex", 0);
+				form.submit();
+			});
+		});
+		</script>
 		<div id="search" class="content whitebg">
 			<form name="search">
 				<div>
 					Producent: <select id="manufacturer" name="manufacturer" onchange='this.form.submit()'>
 						<option label="* (Wszyscy producenci)" value="">* (Wszyscy producenci)</option>
-						<option th:each="manufacturer : ${manufacturers}"
-							th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
+						<option th:each="manufacturer : ${manufacturers}" th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
 					</select>
-					<a id="clearM" href="#" onclick="javscript:clearM();">(x)</a>
+					<button id="clearM">X</button>
 				</div>
 				<div>
 					Lokalizacja: <select id="location" name="location" onchange='this.form.submit()'>
 						<option label="* (Wszystkie miasta)" value="">* (Wszystkie miasta)</option>
-						<option th:each="location : ${locations}"
-							th:text="${location.name}" th:value="${location.name}" />
+						<option th:each="location : ${locations}" th:text="${location.name}" th:value="${location.name}" />
 					</select>
-					<a id="clearL" href="#" onclick="javscript:clearL();">(x)</a>
+					<button id="clearL">X</button>
 				</div>
 			</form>
-			<script th:inline="javascript">
-			/*<![CDATA[*/
-			    function clearM() {
-			    	document.getElementById('manufacturer').selectedIndex = "0";
-			    	document.forms["search"].submit();
-				}
-			    function clearL() {
-			    	document.getElementById('location').selectedIndex = "0";
-			    	document.forms["search"].submit();
-				}
-			    
-				if([[${manufacturers.size()}]] == 1) {
-					document.getElementById('manufacturer').selectedIndex = "1";
-			    } else {
-					document.getElementById('clearM').style.visibility = "hidden";
-			    }
-				if([[${locations.size()}]] == 1) {
-					document.getElementById('location').selectedIndex = "1";
-			    } else {
-					document.getElementById('clearL').style.visibility = "hidden";
-			    }
-			/*]]>*/
-			</script>
 		</div>
 	</div>
 </body>

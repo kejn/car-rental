@@ -10,4 +10,8 @@ public class ColorTo extends AbstractIdType {
 		super(id, type);
 	}
 
+	@Override
+	public boolean equals(Object object) {
+		return (object instanceof ColorTo) && super.equals(object);
+	}
 }

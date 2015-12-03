@@ -10,4 +10,8 @@ public class TransmissionTo extends AbstractIdType {
 		super(id, type);
 	}
 
+	@Override
+	public boolean equals(Object object) {
+		return (object instanceof TransmissionTo) && super.equals(object);
+	}
 }

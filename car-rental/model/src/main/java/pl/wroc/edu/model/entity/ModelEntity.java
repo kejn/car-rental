@@ -21,7 +21,7 @@ public class ModelEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequenceName)
-	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
+	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName, allocationSize = 1)
 	private BigDecimal id;
 	
 	@Column(nullable = false, length = 40)

@@ -19,7 +19,7 @@ public class RenterEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequenceName)
-	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
+	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName, allocationSize = 1)
 	private BigDecimal id;
 	
 	@Column(length = 40)
@@ -33,6 +33,9 @@ public class RenterEntity {
 
 	@Column(length = 9)
 	private String phone;
+	
+	protected RenterEntity(){
+	}
 
 	public RenterEntity(BigDecimal id, String name, String surname, String email, String phone) {
 		this.id = id;

@@ -20,8 +20,8 @@
 		<spring.data.jpa.version>1.9.1.RELEASE</spring.data.jpa.version>
 		<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<oracle.system.path>E:\ORACLE\OracleUser\product\12.1.0\dbhome_1\jdbc\lib\ojdbc6.jar</oracle.system.path>
-		<!-- <oracle.system.path>C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar</oracle.system.path> -->
+		<!-- <oracle.system.path>E:\ORACLE\OracleUser\product\12.1.0\dbhome_1\jdbc\lib\ojdbc6.jar</oracle.system.path> -->
+		<oracle.system.path>C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar</oracle.system.path>
 	</properties>
 
 	<dependencies>
@@ -59,10 +59,6 @@
 			<groupId>net.logstash.logback</groupId>
 			<artifactId>logstash-logback-encoder</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-jpa</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
-			</dependency> -->
 		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -76,8 +72,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-jpa</artifactId> 
-				<version>${spring.data.jpa.version}</version> </dependency> -->
 			<!-- spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -114,10 +108,6 @@
 				<artifactId>spring-data-jpa</artifactId>
 				<version>${spring.data.jpa.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
-				<version>${spring.framework.version}</version> </dependency> <dependency> 
-				<groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
-				<version>${spring.framework.version}</version> </dependency> -->
 			<!-- used for JPA custom type registration of joda-time -->
 			<dependency>
 				<groupId>org.jadira.usertype</groupId>
@@ -166,8 +156,6 @@
 				<scope>system</scope>
 				<systemPath>${oracle.system.path}</systemPath>
 			</dependency>
-			<!-- <dependency> <groupId>org.hibernate.javax.persistence</groupId> <artifactId>hibernate-jpa-2.1-api</artifactId> 
-				<version>1.0.0.Final</version> </dependency> -->
 		</dependencies>
 	</dependencyManagement>
 

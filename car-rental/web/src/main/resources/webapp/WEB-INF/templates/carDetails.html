@@ -2,11 +2,9 @@
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
 <meta charset="UTF-8" />
-<title>CarDetails</title>
-<link rel="stylesheet" th:href="@{/static/application.css}"
-	href="/static/application.css" />
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<title>Car Details</title>
+<link rel="stylesheet" th:href="@{/css/application.css}" href="/css/application.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
@@ -15,9 +13,6 @@
 			dateFormat : 'yy-mm-dd'
 		});
 	});
-	/* $(function() {
-		$("#datepickerUntil").datepicker({ dateFormat: 'yy-mm-dd' });
-	}); */
 </script>
 </head>
 <body>
@@ -70,8 +65,7 @@
 					<td th:text="${car.location.name}">location</td>
 				</tr>
 			</table>
-			<form id="renter" th:action="@{/home}" method="post"
-				th:object="${booking}">
+			<form id="renter" name="rentForm" th:action="@{/save}" method="post" th:object="${booking}">
 				<span>Formularz rezerwacji</span>
 				<table>
 					<tr>
@@ -80,32 +74,30 @@
 					</tr>
 					<tr>
 						<th>Nazwisko:</th>
-						<td><input name="surname" type="text"
-							th:field="*{renter.surname}" /></td>
+						<td><input name="surname" type="text" th:field="*{renter.surname}" /></td>
 					</tr>
 					<tr>
 						<th>Email:</th>
-						<td><input name="email" type="email"
-							th:field="*{renter.email}" required="required" /></td>
+						<td><input name="email" type="email" th:field="*{renter.email}" required="required" /></td>
 					</tr>
 					<tr>
 						<th>Telefon:</th>
-						<td><input name="phone" type="tel" th:field="*{renter.phone}" /></td>
+						<td><input name="phone" type="tel" maxlength="9" th:field="*{renter.phone}" /></td>
 					</tr>
 					<tr>
-						<th>Termin od:</th>
-						<td><input name="since" type="text" class="datepicker"
-							th:field="*{since}" required="required" /></td>
+						<th colspan="2">Termin wypożyczenia</th>
 					</tr>
 					<tr>
-						<th>Termin od:</th>
-						<td><input name="until" type="text" class="datepicker"
-							th:field="*{until}" required="required" /></td>
+						<th>Od:</th>
+						<td><input name="since" type="text" class="datepicker" th:field="*{since}" required="required" /></td>
 					</tr>
 					<tr>
-						<th></th>
-						<td><input name="car" type="text" th:object="${car}" hidden="true"/><input
-							width="100%" type="submit" value="Wypożycz teraz!" /></td>
+						<th>Do</th>
+						<td><input name="until" type="text" class="datepicker" th:field="*{until}" required="required" /></td>
+					</tr>
+					<tr>
+						<th><input id="carId" name="carId" type="text" th:value="${car.id}" hidden="true" /></th>
+						<td><input width="100%" type="submit" value="Wypożycz teraz!" /></td>
 					</tr>
 				</table>
 			</form>

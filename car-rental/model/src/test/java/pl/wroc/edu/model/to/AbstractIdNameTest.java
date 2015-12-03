@@ -50,7 +50,7 @@ public class AbstractIdNameTest {
 	@Test
 	public void testManufacturerIsNotLocation() {
 		//given
-		final LocationTo location = new LocationTo(manufacturer.id, manufacturer.name);
+		final LocationTo location = new LocationTo(manufacturer.getId(), manufacturer.getName());
 		//then
 		assertFalse(manufacturer.equals(location));
 		assertFalse(location.equals(manufacturer));
@@ -60,7 +60,7 @@ public class AbstractIdNameTest {
 	public void testManufacturerIsNotModel() {
 		//given
 		final ManufacturerTo manufacturer = (ManufacturerTo) this.manufacturer;
-		final ModelTo model = new ModelTo(manufacturer.id, manufacturer.name, manufacturer, year);
+		final ModelTo model = new ModelTo(manufacturer.getId(), manufacturer.getName(), manufacturer, year);
 		//then
 		assertFalse(manufacturer.equals(model));
 		assertFalse(model.equals(manufacturer));

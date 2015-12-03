@@ -14,6 +14,15 @@ public abstract class AbstractIdType implements IdAware, TypeAware {
 		this.id = id;
 		this.type = type;
 	}
+	
+	@Override
+	public boolean equals(Object object) {
+		if(object instanceof AbstractIdType) {
+			AbstractIdType other = (AbstractIdType) object;
+			return other.getId().equals(getId()) && other.getType().equals(getType());
+		}
+		return false;
+	}
 
 	@Override
 	public BigDecimal getId() {

@@ -19,7 +19,8 @@ public class MvcConfig extends WebMvcConfigurationSupport {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
+		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
+		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
 	}
 	
 	@Override

@@ -8,7 +8,7 @@ public class EmptyString {
 	 * @return Empty string if the reffering <b>string</b> value is null.
 	 */
 	public static String safeValue(String string) {
-		return string == null ? "null" : string;
+		return string == null ? "" : string;
 	}
 	
 	public static boolean nullOrEmpty(String string) {

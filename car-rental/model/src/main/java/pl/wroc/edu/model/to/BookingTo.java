@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import pl.wroc.edu.model.templates.IdAware;
 
 public class BookingTo implements IdAware {
@@ -15,9 +13,7 @@ public class BookingTo implements IdAware {
 	private BigDecimal id;
 	private CarTo car;
 	private RenterTo renter;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Calendar since;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Calendar until;
 	private Double price;
 	

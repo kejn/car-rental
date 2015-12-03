@@ -3,6 +3,7 @@ package pl.wroc.edu.model.entity;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +23,14 @@ public class BookingEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = sequenceName)
-	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName)
+	@SequenceGenerator(name = sequenceName, sequenceName = sequenceName, initialValue = 1, allocationSize = 1)
 	private BigDecimal id;
 	
 	@ManyToOne
 	@JoinColumn(name = "car", nullable = false)
 	private CarEntity car;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "renter", nullable = false)
 	private RenterEntity renter;
 

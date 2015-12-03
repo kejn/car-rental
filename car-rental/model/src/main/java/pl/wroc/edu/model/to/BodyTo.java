@@ -9,5 +9,10 @@ public class BodyTo extends AbstractIdType {
 	public BodyTo(BigDecimal id, Enum<BodyType> type) {
 		super(id,type);
 	}
+	
+	@Override
+	public boolean equals(Object object) {
+		return (object instanceof BodyTo) && super.equals(object);
+	}
 
 }
