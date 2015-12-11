@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
-<meta charset="UTF-8" />
-<title>Car Details</title>
-<link rel="stylesheet" th:href="@{/css/application.css}" href="/css/application.css" />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<title>Car Details</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/application.css}" href="/css/application.css" />
+	<!-- bootstrap -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- bootstrap end -->
+	<!-- input calendar -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!-- input calendar end -->
 <script>
 	$(function() {
 		$(".datepicker").datepicker({
@@ -16,91 +24,106 @@
 </script>
 </head>
 <body>
-	<div th:include="fragments :: nav"></div>
-	<div class="content whitebg">
-		<div id="detailDiv">
-			<table id="details">
-				<tr>
-					<th>ID</th>
-					<td th:text="${car.id}">id</td>
-				</tr>
-				<tr>
-					<th>Producent</th>
-					<td th:text="${car.model.manufacturer.name}">manufacturer</td>
-				</tr>
-				<tr>
-					<th>Model</th>
-					<td th:text="${car.model.name}">model</td>
-				</tr>
-				<tr>
-					<th>Rok produkcji</th>
-					<td th:text="${car.model.yearOfProduction}">year</td>
-				</tr>
-				<tr>
-					<th>Kolor</th>
-					<td th:text="${car.color.type}">color</td>
-				</tr>
-				<tr>
-					<th>Typ nadwozia</th>
-					<td th:text="${car.body.type}">body</td>
-				</tr>
-				<tr>
-					<th>Skrzynia biegów</th>
-					<td th:text="${car.transmission.type}">transmission</td>
-				</tr>
-				<tr>
-					<th>Napęd</th>
-					<td th:text="${car.driveWheels.type}">wheels</td>
-				</tr>
-				<tr>
-					<th>Moc [KM]</th>
-					<td th:text="${car.power}">power</td>
-				</tr>
-				<tr>
-					<th>Masa [Kg]</th>
-					<td th:text="${car.weight}">weight</td>
-				</tr>
-				<tr>
-					<th>Lokalizacja</th>
-					<td th:text="${car.location.name}">location</td>
-				</tr>
-			</table>
-			<form id="renter" name="rentForm" th:action="@{/save}" method="post" th:object="${booking}">
-				<span>Formularz rezerwacji</span>
-				<table>
+	<div th:include="fragments :: navdetails"></div>
+	<div class="container">
+		<div id="detailDiv" class="row panel panel-default">
+			<div class="col-sm-4">
+				<h2>Dane</h2>
+				<table id="details" class="table">
 					<tr>
-						<th>Imię:</th>
-						<td><input name="name" type="text" th:field="*{renter.name}" /></td>
+						<th>ID</th>
+						<td th:text="${car.id}">id</td>
 					</tr>
 					<tr>
-						<th>Nazwisko:</th>
-						<td><input name="surname" type="text" th:field="*{renter.surname}" /></td>
+						<th>Producent</th>
+						<td th:text="${car.model.manufacturer.name}">manufacturer</td>
 					</tr>
 					<tr>
-						<th>Email:</th>
-						<td><input name="email" type="email" th:field="*{renter.email}" required="required" /></td>
+						<th>Model</th>
+						<td th:text="${car.model.name}">model</td>
 					</tr>
 					<tr>
-						<th>Telefon:</th>
-						<td><input name="phone" type="tel" maxlength="9" th:field="*{renter.phone}" /></td>
+						<th>Rok produkcji</th>
+						<td th:text="${car.model.yearOfProduction}">year</td>
 					</tr>
 					<tr>
-						<th colspan="2">Termin wypożyczenia</th>
+						<th>Kolor</th>
+						<td th:text="${car.color.type}">color</td>
 					</tr>
 					<tr>
-						<th>Od:</th>
-						<td><input name="since" type="text" class="datepicker" th:field="*{since}" required="required" /></td>
+						<th>Typ nadwozia</th>
+						<td th:text="${car.body.type}">body</td>
 					</tr>
 					<tr>
-						<th>Do</th>
-						<td><input name="until" type="text" class="datepicker" th:field="*{until}" required="required" /></td>
+						<th>Skrzynia biegów</th>
+						<td th:text="${car.transmission.type}">transmission</td>
 					</tr>
 					<tr>
-						<th><input id="carId" name="carId" type="text" th:value="${car.id}" hidden="true" /></th>
-						<td><input width="100%" type="submit" value="Wypożycz teraz!" /></td>
+						<th>Napęd</th>
+						<td th:text="${car.driveWheels.type}">wheels</td>
+					</tr>
+					<tr>
+						<th>Moc [KM]</th>
+						<td th:text="${car.power}">power</td>
+					</tr>
+					<tr>
+						<th>Masa [Kg]</th>
+						<td th:text="${car.weight}">weight</td>
+					</tr>
+					<tr>
+						<th>Lokalizacja</th>
+						<td th:text="${car.location.name}">location</td>
 					</tr>
 				</table>
-			</form>
+			</div>
+			<div class="col-sm-8">
+				<h2>Formularz rezerwacji</h2>
+				<form id="renter" name="rentForm" th:action="@{/save}" method="post" th:object="${booking}" role="form" class="form-horizontal">
+					<div class="form-group form-group-sm">
+						<label for="name" class="control-label col-sm-2">Imię: </label>
+						<div class="col-sm-10">
+							<input id="name" type="text" th:field="*{renter.name}" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="surname" class="control-label col-sm-2">Nazwisko: </label>
+						<div class="col-sm-10">
+							<input id="surname" type="text" th:field="*{renter.surname}" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="email" class="control-label col-sm-2">Email: </label>
+						<div class="col-sm-10">
+							<input id="email" type="email" th:field="*{renter.email}" required="required" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="phone" class="control-label col-sm-2">Telefon: </label>
+						<div class="col-sm-10">
+							<input id="phone" type="tel" maxlength="9" th:field="*{renter.phone}" class="form-control" />
+						</div>
+					</div>
+					<h4>Termin wypożyczenia&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span></h4>
+					<div class="form-group form-group-sm">
+						<label for="since" class="control-label col-sm-2">Od: </label>
+						<div class="col-sm-10">
+							<input id="since" type="text" th:field="*{since}" required="required" class="form-control datepicker" />
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="until" class="control-label col-sm-2">Do: </label>
+						<div class="col-sm-10">
+							<input id="until" type="text" th:field="*{until}" required="required" class="form-control datepicker" />
+						</div>
+					</div>
+					<input id="carId" name="carId" type="text" th:value="${car.id}" hidden="true" />
+					<div class="form-group"> 
+				    	<div class="col-sm-offset-2 col-sm-10">
+				    		<input width="100%" type="submit" class="btn btn-info" value="Wypożycz teraz!" />
+			    		</div>
+				  	</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </body>

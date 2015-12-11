@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
-<meta charset="UTF-8" />
-<title>Car List</title>
-<link rel="stylesheet" th:href="@{/css/application.css}" href="/css/application.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<title>Car List</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/application.css}" href="/css/application.css" />
+	<!-- bootstrap -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- bootstrap end -->
+	<script>
+	$(document).ready(function() {
+		$("#carsHyperlink").addClass("active");
+	});
+	</script>
 </head>
 <body>
 	<div th:include=" fragments :: nav"></div>
 	<div th:include=" fragments :: search"></div>
-	<div class="content">
-		<table id="preview">
-			<tr>
-				<th>ID</th>
-				<th>Model</th>
-				<th>Typ nadwozia</th>
-				<th>Rok produkcji</th>
-				<th>Moc [KM]</th>
-				<th>Lokalizacja</th>
-				<th>&nbsp;</th>
-			</tr>
-			<tr th:each="car : ${cars}">
-				<td th:text="${car.id}">id</td>
-				<td th:text="${car.model}">model</td>
-				<td th:text="${car.body.type}">body</td>
-				<td th:text="${car.model.yearOfProduction}">year</td>
-				<td th:text="${car.power}">power</td>
-				<td th:text="${car.location.name}">location</td>
-				<td>
-					<form th:action="@{/cars/details}">
-						<input name="id" type="text" th:value="${car.id}" hidden="true" /> <input type="submit" value="Szczegóły >" />
-					</form>
-				</td>
-			</tr>
+	<div class="container panel panel-default">
+		<table id="preview" class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Model</th>
+					<th>Typ nadwozia</th>
+					<th>Rok produkcji</th>
+					<th>Moc [KM]</th>
+					<th>Lokalizacja</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="car : ${cars}">
+					<td th:text="${car.id}">id</td>
+					<td th:text="${car.model}">model</td>
+					<td th:text="${car.body.type}">body</td>
+					<td th:text="${car.model.yearOfProduction}">year</td>
+					<td th:text="${car.power}">power</td>
+					<td th:text="${car.location.name}">location</td>
+					<td>
+						<form th:action="@{/cars/details}" role="form">
+							<input name="id" type="text" th:value="${car.id}" hidden="true" />
+							<input type="submit" value="Szczegóły >" class="btn btn-xs btn-primary"/>
+						</form>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </body>

@@ -21,7 +21,7 @@ public class EmbeddedJetty {
 	private static final Logger logger = LoggerFactory.getLogger(EmbeddedJetty.class);
 
 	private static final int defaultPort = 9721;
-	private static final String contextPath = "/car-rental/";
+	private static final String contextPath = "/car-rental";
 	private static final String mappingUrl = "/*";
 	private static final String defaultProfile = "dev";
 	private static final String webAppDirectory = "webapp";

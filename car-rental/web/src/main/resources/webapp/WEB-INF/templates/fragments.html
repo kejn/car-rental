@@ -5,13 +5,52 @@
 </head>
 <body>
 	<div th:fragment="nav">
-		<div id="nav" class="whitebg">
-			<div class="content">
-				<div>
-					<a th:href="@{/home}">Strona główna</a>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>		
+					<a class="navbar-brand" th:href="@{/home}">car-rental</a>
 				</div>
-				<div>
-					<a th:href="@{/cars}">Lista samochodów</a>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li id="homeHyperlink"><a th:href="@{/home}">
+							<span class="glyphicon glyphicon-home"></span> Strona główna</a>
+						</li>
+						<li id="carsHyperlink"><a th:href="@{/cars}">
+							<span class="glyphicon glyphicon-th-list"></span> Lista samochodów</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:fragment="navdetails">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>		
+					<a class="navbar-brand" th:href="@{/home}">car-rental</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li id="homeHyperlink"><a th:href="@{/home}">
+							<span class="glyphicon glyphicon-home"></span> Strona główna</a>
+						</li>
+						<li id="carsHyperlink"><a th:href="@{/cars}">
+							<span class="glyphicon glyphicon-th-list"></span> Lista samochodów</a>
+						</li>
+						<li class="active"><a href="#">
+							<span class="glyphicon glyphicon-list-alt"></span> Szczegóły</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -42,21 +81,23 @@
 			});
 		});
 		</script>
-		<div id="search" class="content whitebg">
-			<form name="search">
-				<div>
-					Producent: <select id="manufacturer" name="manufacturer" onchange='this.form.submit()'>
+		<div class="container" style="margin-bottom: 20px;">
+			<form class="form-inline">
+				<div class="form-group form-group-sm">
+					<label for="manufacturer">Producent:</label>
+					<select id="manufacturer" name="manufacturer" onchange="this.form.submit()" class="form-control">
 						<option label="* (Wszyscy producenci)" value="">* (Wszyscy producenci)</option>
 						<option th:each="manufacturer : ${manufacturers}" th:text="${manufacturer.name}" th:value="${manufacturer.name}" />
 					</select>
-					<button id="clearM">X</button>
+					<button id="clearM" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
 				</div>
-				<div>
-					Lokalizacja: <select id="location" name="location" onchange='this.form.submit()'>
+				<div class="form-group  form-group-sm">
+					<label for="location">Lokalizacja:</label>
+					<select id="location" name="location" onchange="this.form.submit()" class="form-control">
 						<option label="* (Wszystkie miasta)" value="">* (Wszystkie miasta)</option>
 						<option th:each="location : ${locations}" th:text="${location.name}" th:value="${location.name}" />
 					</select>
-					<button id="clearL">X</button>
+					<button id="clearL" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
 				</div>
 			</form>
 		</div>
