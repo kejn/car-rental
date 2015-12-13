@@ -1,6 +1,8 @@
 package pl.wroc.edu.jpa.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import pl.wroc.edu.jpa.dao.config.DataAccessDaoConfig;
-import pl.wroc.edu.model.entity.CarEntity;
+import pl.wroc.edu.model.entity.AllCars;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=DataAccessDaoConfig.class, loader=AnnotationConfigContextLoader.class)
@@ -27,7 +29,7 @@ public class CarDaoImplTest {
         // given
         final BigDecimal carId = BigDecimal.ONE;
         // when
-        CarEntity carEntity = carDao.findOne(carId);
+        AllCars carEntity = carDao.findOne(carId);
         // then
         assertNotNull(carEntity);
     }
@@ -37,7 +39,7 @@ public class CarDaoImplTest {
 		// given
 		final long numberOfCarsInRepository = carDao.findAll().size(); 
 		// when
-		List<CarEntity> carEntities = carDao.findByParameters(null, null);
+		List<AllCars> carEntities = carDao.findByParameters(null, null);
 		// then
 		assertNotNull(carEntities);
 		assertFalse(carEntities.isEmpty());
@@ -51,7 +53,7 @@ public class CarDaoImplTest {
         final String carManufacturer = "Audi";
         final String carLocation = "Warszawa";
         // when
-        List<CarEntity> carEntities = carDao.findByParameters(carManufacturer, carLocation);
+        List<AllCars> carEntities = carDao.findByParameters(carManufacturer, carLocation);
         // then
         assertNotNull(carEntities);
         assertFalse(carEntities.isEmpty());
@@ -64,7 +66,7 @@ public class CarDaoImplTest {
     	// given
     	final String carManufacturer = "Audi";
     	// when
-    	List<CarEntity> carEntities = carDao.findByParameters(carManufacturer, null);
+    	List<AllCars> carEntities = carDao.findByParameters(carManufacturer, null);
     	// then
     	assertNotNull(carEntities);
     	assertFalse(carEntities.isEmpty());
@@ -76,7 +78,7 @@ public class CarDaoImplTest {
     	// given
     	final String carLocation = "Warszawa";
     	// when
-    	List<CarEntity> carEntities = carDao.findByParameters(null, carLocation);
+    	List<AllCars> carEntities = carDao.findByParameters(null, carLocation);
     	// then
     	assertNotNull(carEntities);
     	assertFalse(carEntities.isEmpty());

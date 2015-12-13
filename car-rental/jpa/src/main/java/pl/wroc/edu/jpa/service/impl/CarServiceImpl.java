@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.wroc.edu.jpa.dao.CarDao;
 import pl.wroc.edu.jpa.mapper.CarMapper;
 import pl.wroc.edu.jpa.service.CarService;
+import pl.wroc.edu.model.helper.EmptyString;
 import pl.wroc.edu.model.to.CarTo;
 
 @Service
@@ -26,7 +27,13 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public List<CarTo> findCarsByParameters(String manufacturer, String location) {
-		return CarMapper.map2To(carDao.findByParameters(manufacturer, location));
+		List<CarTo> results = null;
+		if(EmptyString.nullOrEmpty(manufacturer) && EmptyString.nullOrEmpty(location)) {
+			results = findAllCars();
+		} else {
+			results = CarMapper.map2To(carDao.findByParameters(manufacturer, location));
+		}
+		return results;
 	}
 
 	@Override

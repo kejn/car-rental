@@ -9,20 +9,17 @@ import com.mysema.query.BooleanBuilder;
 import com.mysema.query.jpa.impl.JPAQuery;
 
 import pl.wroc.edu.jpa.dao.CarDao;
-import pl.wroc.edu.model.entity.CarEntity;
-import pl.wroc.edu.model.entity.QCarEntity;
+import pl.wroc.edu.model.entity.AllCars;
+import pl.wroc.edu.model.entity.QAllCars;
 import pl.wroc.edu.model.helper.EmptyString;
 
 @Repository
-public class CarDaoImpl extends AbstractDao<CarEntity, BigDecimal> implements CarDao {
+public class CarDaoImpl extends AbstractDao<AllCars, BigDecimal> implements CarDao {
 
 	@Override
-	public List<CarEntity> findByParameters(String manufacturer, String location) {
-		if(EmptyString.nullOrEmpty(manufacturer) && EmptyString.nullOrEmpty(location)) {
-			return super.findAll();
-		}
+	public List<AllCars> findByParameters(String manufacturer, String location) {
 		JPAQuery query = new JPAQuery(entityManager);
-		QCarEntity carEntity = QCarEntity.carEntity;
+		QAllCars carEntity = QAllCars.allCars;
 		BooleanBuilder builder = new BooleanBuilder();
 		if(!EmptyString.nullOrEmpty(manufacturer)) {
 			builder.and(carEntity.model.manufacturer.name.startsWithIgnoreCase(manufacturer));

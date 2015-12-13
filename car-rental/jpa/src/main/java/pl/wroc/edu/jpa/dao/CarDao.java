@@ -3,10 +3,10 @@ package pl.wroc.edu.jpa.dao;
 import java.math.BigDecimal;
 import java.util.List;
 
-import pl.wroc.edu.model.entity.CarEntity;
+import pl.wroc.edu.model.entity.AllCars;
 
-public interface CarDao extends Dao<CarEntity, BigDecimal> {
+public interface CarDao extends Dao<AllCars, BigDecimal> {
 	
-	List<CarEntity> findByParameters(String manufacturer, String location);
+	List<AllCars> findByParameters(String manufacturer, String location);
 
 }
